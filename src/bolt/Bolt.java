@@ -1,17 +1,14 @@
 package bolt;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Vector;
 
 public class Bolt {
     private String nev;
     private String cim;
     private String tulajdonos;
-    private Tej[] tejpult;
-    private int flag;
+    private Vector<Tej> tejpult;
 
-    public Bolt(String nev, String cim, String tulajdonos, Tej[] tejpult) {
+    public Bolt(String nev, String cim, String tulajdonos, Vector<Tej> tejpult) {
         this.nev = nev;
         this.cim = cim;
         this.tulajdonos = tulajdonos;
@@ -37,7 +34,7 @@ public class Bolt {
     }
 
     public boolean vanMegTej() {
-        return tejpult.length != 0;
+        return tejpult.size() != 0;
     }
 
     public Tej vasarolTej(Tej m) {
@@ -45,6 +42,6 @@ public class Bolt {
     }
 
     public void feltoltTej(Tej m) {
-        
+        tejpult.add(m);
     }
 }
