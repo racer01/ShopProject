@@ -49,6 +49,6 @@ public class Tej {
 
     @Override
     public String toString() {
-        return null;
+        return String.format("%s %s", gyarto, zsirtartalom);
     }
 }
