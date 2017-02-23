@@ -59,7 +59,7 @@ public class Bolt {
         if (tejpult.contains(m.vonalkod)) {
             tejpult.get(m.vonalkod).adMennyiseg(1);
         } else {
-            tejpult.put(new Long(m.vonalkod), new BoltBejegyzes(m, 1, 100));
+            tejpult.put(m.vonalkod.longValue(), new BoltBejegyzes(m, 1, 100));
         }
     }
 
