@@ -1,4 +1,6 @@
-package bolt;
+package bolt.tej;
+
+import bolt.Tej;
 
 import java.util.Date;
 
