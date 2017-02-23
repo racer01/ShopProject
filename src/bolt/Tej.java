@@ -4,33 +4,30 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Tej {
-    private long vonalkod;
-    private static final int LITER = 1000;
-    private static final int FELLITER = 500;
-    private static final int POHAR = 200;
-    private static final double ZSIROS = 3.5;
-    private static final double FELZSIROS = 2.8;
-    private int urtartalom;
-    private String gyarto;
-    private Date szavatossagiIdo;
-    private double zsirtartalom;
-    private long ar;
+    public static final int LITER = 1000;
+    public static final int FELLITER = 500;
+    public static final int POHAR = 200;
+    public static final double ZSIROS = 3.5;
+    public static final double FELZSIROS = 2.8;
+    protected Long vonalkod;
+    protected int urtartalom;
+    protected String gyarto;
+    protected Date szavatossagiIdo;
+    protected double zsirtartalom;
 
     public Tej(long vonalkod,
                int urtartalom,
                String gyarto,
                Date szavatossagiIdo,
-               double zsirtartalom,
-               long ar) {
+               double zsirtartalom) {
         this.vonalkod = vonalkod;
         this.urtartalom = urtartalom;
         this.gyarto = gyarto;
         this.szavatossagiIdo = szavatossagiIdo;
         this.zsirtartalom = zsirtartalom;
-        this.ar = ar;
     }
 
-    public long getVonalkod() {
+    public Long getVonalkod() {
         return vonalkod;
     }
 
@@ -54,12 +51,14 @@ public class Tej {
         return zsirtartalom;
     }
 
-    public long getAr() {
-        return ar;
-    }
-
     @Override
     public String toString() {
-        return String.format("%s %s", gyarto, zsirtartalom);
+        String zsir = "";
+        if (zsirtartalom == ZSIROS) {
+            zsir = String.format("%s ", "zsíros");
+        } else if (zsirtartalom == FELZSIROS) {
+            zsir = String.format("%s ", "félzsíros");
+        }
+        return String.format("%s %s tej (%f%%) %fl", gyarto, zsir, zsirtartalom, (float) urtartalom / 1000);
     }
 }
