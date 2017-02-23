@@ -3,7 +3,7 @@ package bolt;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Tej {
+public abstract class Tej {
     public static final int LITER = 1000;
     public static final int FELLITER = 500;
     public static final int POHAR = 200;
