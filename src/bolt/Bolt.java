@@ -54,20 +54,32 @@ public class Bolt {
         return false;
     }
 
-    public void feltoltElelmiszerrel(Long vonalkod, long mennyiseg) {
-        elelmiszerpult.get(vonalkod).adMennyiseg(mennyiseg);
+    public void feltoltElelmiszerrel(Long vonalkod, long mennyiseg) throws NemLetezoAruKivetel {
+        if (elelmiszerpult.containsKey(vonalkod)) {
+            elelmiszerpult.get(vonalkod).adMennyiseg(mennyiseg);
+        } else {
+            throw new NemLetezoAruKivetel("Nem létezik ilyen teltölthető áru.");
+        }
     }
 
     public void feltoltUjElelmiszerrel(Elelmiszer e, long mennyiseg, long ar) {
         elelmiszerpult.put(e.getVonalkod(), new BoltBejegyzes(e, mennyiseg, ar));
     }
 
-    public void torolElelmiszert(Long vonalkod) {
-        elelmiszerpult.remove(vonalkod);
+    public void torolElelmiszert(Long vonalkod) throws NemLetezoAruKivetel {
+        if (elelmiszerpult.containsKey(vonalkod)) {
+            elelmiszerpult.remove(vonalkod);
+        } else {
+            throw new NemLetezoAruKivetel("Nem létezik ilyen törölhető áru.");
+        }
     }
 
-    public void vasarolElelmiszert(Long vonalkod, long mennyiseg) {
-        elelmiszerpult.get(vonalkod).levonMennyiseg(mennyiseg);
+    public void vasarolElelmiszert(Long vonalkod, long mennyiseg) throws NemLetezoAruKivetel, TulSokLevonasKivetel {
+        if (elelmiszerpult.containsKey(vonalkod)) {
+            elelmiszerpult.get(vonalkod).levonMennyiseg(mennyiseg);
+        } else {
+            throw new NemLetezoAruKivetel("Nem létezik ilyen megvásárolható áru.");
+        }
     }
 
     class BoltBejegyzes {
@@ -101,8 +113,13 @@ public class Bolt {
             this.mennyiseg += mennyiseg;
         }
 
-        public void levonMennyiseg(long mennyiseg) {
-            this.mennyiseg -= mennyiseg;
+        public void levonMennyiseg(long mennyiseg) throws TulSokLevonasKivetel {
+            if (this.mennyiseg >= mennyiseg) {
+                this.mennyiseg -= mennyiseg;
+            }
+            else {
+                throw new TulSokLevonasKivetel("A kívánt áruból nem elérhető a kívánt mennyiség.");
+            }
         }
 
         public long getAr() {
