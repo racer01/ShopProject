@@ -28,4 +28,13 @@ public abstract class Tej extends Elelmiszer {
     public double getZsirtartalom() {
         return zsirtartalom;
     }
+
+    protected String getZsir() {
+        if (zsirtartalom == ZSIROS) {
+            return "zsíros";
+        } else if (zsirtartalom == FELZSIROS) {
+            return "félzsíros";
+        }
+        return "";
+    }
 }

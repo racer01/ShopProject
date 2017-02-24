@@ -11,12 +11,10 @@ public class TartosTej extends Tej {
 
     @Override
     public String toString() {
-        String zsir = "";
-        if (zsirtartalom == ZSIROS) {
-            zsir = "zsíros";
-        } else if (zsirtartalom == FELZSIROS) {
-            zsir = "félzsíros";
-        }
-        return String.format("%s %s, féltartós tej (%f%%) %fl", gyarto, zsir, zsirtartalom, (float) urtartalom / 1000);
+        return String.format("%s %s, tartós tej (%f%%) %fl",
+                gyarto,
+                getZsir(),
+                zsirtartalom,
+                (float) urtartalom / 1000);
     }
 }
