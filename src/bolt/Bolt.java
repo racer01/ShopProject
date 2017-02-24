@@ -54,7 +54,7 @@ public class Bolt {
         return false;
     }
 
-    public void feltoltElelmiszerrel(Long vonalkod, long mennyiseg) throws NemLetezoAruKivetel {
+    public void feltoltElelmiszerrel(Long vonalkod, long mennyiseg) throws BoltKivetel {
         if (elelmiszerpult.containsKey(vonalkod)) {
             elelmiszerpult.get(vonalkod).adMennyiseg(mennyiseg);
         } else {
@@ -66,7 +66,7 @@ public class Bolt {
         elelmiszerpult.put(e.getVonalkod(), new BoltBejegyzes(e, mennyiseg, ar));
     }
 
-    public void torolElelmiszert(Long vonalkod) throws NemLetezoAruKivetel {
+    public void torolElelmiszert(Long vonalkod) throws BoltKivetel {
         if (elelmiszerpult.containsKey(vonalkod)) {
             elelmiszerpult.remove(vonalkod);
         } else {
@@ -74,7 +74,7 @@ public class Bolt {
         }
     }
 
-    public void vasarolElelmiszert(Long vonalkod, long mennyiseg) throws NemLetezoAruKivetel, TulSokLevonasKivetel {
+    public void vasarolElelmiszert(Long vonalkod, long mennyiseg) throws BoltKivetel {
         if (elelmiszerpult.containsKey(vonalkod)) {
             elelmiszerpult.get(vonalkod).levonMennyiseg(mennyiseg);
         } else {
@@ -113,7 +113,7 @@ public class Bolt {
             this.mennyiseg += mennyiseg;
         }
 
-        public void levonMennyiseg(long mennyiseg) throws TulSokLevonasKivetel {
+        public void levonMennyiseg(long mennyiseg) throws BoltKivetel {
             if (this.mennyiseg >= mennyiseg) {
                 this.mennyiseg -= mennyiseg;
             }
