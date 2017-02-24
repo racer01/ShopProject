@@ -1,5 +1,8 @@
 package bolt;
 
+import bolt.aruk.*;
+import bolt.kivetel.*;
+
 import java.util.Hashtable;
 
 public class Bolt {

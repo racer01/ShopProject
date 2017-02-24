@@ -1,17 +1,17 @@
-package bolt.tej;
+package bolt.aruk.tej;
 
 import bolt.Tej;
 
 import java.util.Date;
 
-public class FeltartosTej extends Tej {
-    public FeltartosTej(long vonalkod, int urtartalom, String gyarto, Date szavatossagiIdo, double zsirtartalom) {
+public class TartosTej extends Tej {
+    public TartosTej(long vonalkod, int urtartalom, String gyarto, Date szavatossagiIdo, double zsirtartalom) {
         super(vonalkod, urtartalom, gyarto, szavatossagiIdo, zsirtartalom);
     }
 
     @Override
     public String toString() {
-        return String.format("%s %s, féltartós tej (%f%%) %fl",
+        return String.format("%s %s, tartós tej (%f%%) %fl",
                 gyarto,
                 getZsir(),
                 zsirtartalom,
